@@ -10,8 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70d9a7b2-ba01-4974-8af7-8f35dec3319c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/socket_client_dyn" beforeDir="false" afterPath="$PROJECT_DIR$/build/socket_client_dyn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/socket_client_static" beforeDir="false" afterPath="$PROJECT_DIR$/build/socket_client_static" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/socket_client.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/socket_client.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +73,7 @@
       <workItem from="1576503177254" duration="8954000" />
       <workItem from="1576567934470" duration="4088000" />
       <workItem from="1576573032035" duration="3263000" />
-      <workItem from="1580138189531" duration="3936000" />
+      <workItem from="1580138189531" duration="4668000" />
     </task>
     <servers />
   </component>

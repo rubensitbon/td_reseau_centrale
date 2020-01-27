@@ -66,7 +66,7 @@ int main(int argc, char **argv)
     trame[2] = 0x00;
     trame[3] = 0x01;
     trame[4] = 0x00;
-    trame[5] = 0x08;
+    trame[5] = 0x14;
     trame[6] = 0x00;
     trame[7] = 0xF0;
     trame[8] = 0x1E;
@@ -75,18 +75,18 @@ int main(int argc, char **argv)
     trame[11] = 0x10;
     trame[12] = 0x37;
     trame[13] = 0x06;
-    trame[15] = 0x68;
-    trame[16] = 0x07;
-    trame[17] = 0x32;
-    trame[18] = 0x00;
-    trame[19] = 0x03;
-    trame[20] = 0x00;
-    trame[21] = 0x01;
-    trame[22] = 0x00;
-    trame[23] = 0x02;
-    trame[24] = 0x00;
-    trame[25] = 0x03;
-    trame[26] = 0x00;
+    trame[14] = 0x68;
+    trame[15] = 0x07;
+    trame[16] = 0x32;
+    trame[17] = 0x00;
+    trame[18] = 0x03;
+    trame[19] = 0x00;
+    trame[20] = 0x01;
+    trame[21] = 0x00;
+    trame[22] = 0x02;
+    trame[23] = 0x00;
+    trame[24] = 0x03;
+    trame[25] = 0x00;
 
 
     //creation d'un pts de communication
@@ -112,7 +112,7 @@ int main(int argc, char **argv)
     adrlect.sin_port=htons(PORT_SERVEUR); // def du numero de port de la socket
     adrlect.sin_addr.s_addr=inet_addr(IP_SERVEUR); // def de l'addresse  de la socket
 
-    CHECK_ERROR(send(sd, (void *) trame, 27, 0), -1, "Erreur envoie data !!! \n");
+    CHECK_ERROR(send(sd, (void *) trame, 26, 0), -1, "Erreur envoie data !!! \n");
 
 
     // printf("Bien joué roger !");
