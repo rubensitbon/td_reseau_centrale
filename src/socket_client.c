@@ -42,23 +42,6 @@ int main(int argc, char **argv)
 
     char trame [27];
 
-    // Premeière trame
-//    trame[0] = 0x00;
-//    trame[1] = 0x00;
-//    trame[2] = 0x00;
-//    trame[3] = 0x01;
-//    trame[4] = 0x00;
-//    trame[5] = 0x08;
-//    trame[6] = 0x00;
-//    trame[7] = 0xF0;
-//    trame[8] = 0x1E;
-//    trame[9] = 0x10;
-//    trame[10] = 0x14;
-//    trame[11] = 0x10;
-//    trame[12] = 0x24;
-//    trame[13] = 0x06;
-
-
     // deuxième trame
 
     trame[0] = 0x00;
