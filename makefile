@@ -7,7 +7,7 @@ socket_client: build/socket_client
 socket_serveur: build/socket_serveur
 
 INC=-I./include
-CC=gcc $(INC)
+CC=gcc -pthread $(INC)
 
 build/socket_client: src/socket_client.c
 	$(CC) src/socket_client.c -o build/socket_client
