@@ -1,26 +1,20 @@
 #première règle : règle par défaut 
 
-all: @echo choisir une règle parmi  types,karaoks
+all: socket_client socket_serveur
 
-sockets: build/socket_client_dyn build/socket_client_static build/socket_serveur_dyn build/socket_serveur_static
 
-socket_client: build/socket_client_dyn build/socket_client_static
-socket_serveur: build/socket_serveur_dyn build/socket_serveur_static
+socket_client: build/socket_client
+socket_serveur: build/socket_serveur
 
-CC=gcc
-DEP=src/socket_client.c src/socket_serveur.c
+INC=-I./include
+CC=gcc $(INC)
 
-build/socket_client_dyn: $(DEP)
-	$(CC) src/socket_client.c -o build/socket_client_dyn
+build/socket_client: src/socket_client.c
+	$(CC) src/socket_client.c -o build/socket_client
 
-build/socket_client_static: $(DEP)
-	$(CC) -static src/socket_client.c -o build/socket_client_static
 
-build/socket_serveur_dyn: $(DEP)
-	$(CC) src/socket_serveur.c -o build/socket_serveur_dyn
-
-build/socket_serveur_static: $(DEP)
-	$(CC) -static src/socket_serveur.c -o build/socket_serveur_static
+build/socket_serveur: src/socket_serveur.c
+	$(CC) src/socket_serveur.c -o build/socket_serveur
 
 clean: 
 	@echo "Nettoyage"
