@@ -20,7 +20,7 @@
 
 typedef void * (*pf_t)(void *);
 int sd; // Socket de dialogue
-char bufflect [MAX_CHAR+1];
+int bufflect [MAX_CHAR+1];
 
 void threadSend(char * trame);
 void threadRead(void);
@@ -61,7 +61,7 @@ int main(int argc, char **argv)
     trame[5] = 0x14;
     trame[6] = 0x00;
     trame[7] = 0xF0;
-    trame[8] = 0x1E;
+    trame[8] = 0x0C;
     trame[9] = 0x10;
     trame[10] = 0x14;
     trame[11] = 0x10;
@@ -109,21 +109,26 @@ int main(int argc, char **argv)
     CHECK_T(pthread_create (&tid[1], NULL, (pf_t)threadRead,
                                 NULL), "pthread_create()");
 
+    getchar();
     close(sd);
     return 1;
 }
 
 void threadSend(char * trame)
 {
+    printf("START SEND \n");
     CHECK_ERROR(send(sd, (void *) trame, 26, 0), -1, "Erreur envoi data !!! \n");
 	pthread_exit((void *) 1);
 }
 
 void threadRead(void)
 {
+    printf("START READ \n");
     while(1)
     {
-        CHECK_ERROR(recv(sd, (void *) bufflect, MAX_CHAR+1, 0), -1, "Erreur reception data !!! \n");
-        printf("Just Received> %s \n", bufflect);
+        int nb = -1;
+        CHECK_ERROR(nb = recv(sd, (void *) bufflect, MAX_CHAR+1, 0), -1, "Erreur reception data !!! \n");
+        printf("Just Received %s \n", bufflect);
+        printf("nb = %d\n", nb);
     }
 }
