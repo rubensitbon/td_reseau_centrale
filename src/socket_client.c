@@ -118,17 +118,12 @@ int main(int argc, char **argv)
     // printf("Bien joué roger !");
      getchar();
 
-    /*while(1)
+    while(1)
     {
-        printf("Client> ");
-        gets(buffecrit);
-
-        CHECK_ERROR(send(sd, (void *) buffecrit, strlen(buffecrit)+1, 0), -1, "Erreur envoie data !!! \n");
-
         CHECK_ERROR(recv(sd, (void *) bufflect, MAX_CHAR+1, 0), -1, "Erreur reception data !!! \n");
-        printf("Lecteur> %s \n", bufflect);
+        printf("Just Received> %s \n", bufflect);
 
-    }*/
+    }
 
     close(sd);
 
