@@ -15,10 +15,12 @@
 #define CHECK_T(status, msg)                        \
   if (0 != (status))   {                            \
     fprintf(stderr, "pthread erreur : %s\n", msg);  \
-    exit (EXIT_FAILURE);                            \
+    exit (-1);                                 \
   }
 
 typedef void * (*pf_t)(void *);
+int sd; // Socket de dialogue
+char bufflect [MAX_CHAR+1];
 
 void threadSend(char * trame);
 void threadRead(void);
@@ -43,13 +45,8 @@ int main(int argc, char **argv)
     printf("PORT_SERVEUR: %d \n", PORT_SERVEUR);
     printf("XWAY_ADDRESS: %s \n", XWAY_ADDRESS);
 
-
-
-    int sd; // Socket de dialogue
     struct sockaddr_in adrlect;
     struct sockaddr_in adrecriv;
-    char bufflect [MAX_CHAR+1];
-    char buffecrit [MAX_CHAR+1];
     int tailleadr;
 
     char trame [27];
@@ -107,10 +104,10 @@ int main(int argc, char **argv)
     adrlect.sin_port=htons(PORT_SERVEUR); // def du numero de port de la socket
     adrlect.sin_addr.s_addr=inet_addr(IP_SERVEUR); // def de l'addresse  de la socket
 
-    CHECK_T(pthread_create (&tid[i], NULL, (pf_t)threadSend,
-                                (void *)i), "pthread_create()");
-    CHECK_T(pthread_create (&tid[i], NULL, (pf_t)threadRead,
-                                (void *)i), "pthread_create()");
+    CHECK_T(pthread_create (&tid[0], NULL, (pf_t)threadSend,
+                                (char *)trame), "pthread_create()");
+    CHECK_T(pthread_create (&tid[1], NULL, (pf_t)threadRead,
+                                NULL), "pthread_create()");
 
     close(sd);
     return 1;
