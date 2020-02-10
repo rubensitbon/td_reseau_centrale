@@ -138,7 +138,7 @@ void threadSend(char * trame)
 void threadRead(void)
 {
     printf("START READ \n");
-    char trame [27];
+    char trame [15];
     while(1)
     {
         int nb = -1;
@@ -147,27 +147,26 @@ void threadRead(void)
         printf("Just Received\n");
         affiche(bufflect, nb);
         printf("nb = %d\n", nb);
-        // if (nb == 24)
-        // {
-        //     int seqAlea = bufflect[13];
-        //     trame[0] = 0x00;
-        //     trame[1] = 0x00;
-        //     trame[2] = 0x00;
-        //     trame[3] = 0x01;
-        //     trame[4] = 0x00;
-        //     trame[5] = 0x09;
-        //     trame[6] = 0x00;
-        //     trame[7] = 0xF1;
-        //     trame[8] = 0x0C;
-        //     trame[9] = 0x10;
-        //     trame[10] = 0x14;
-        //     trame[11] = 0x10;
-        //     trame[12] = 0x19;
-        //     trame[13] = seqAlea;
-        //     trame[14] = 0xFE;
-        //     CHECK_T(pthread_create (&tid[0], NULL, (pf_t)threadSend,
-        //                     (char *)trame), "pthread_create()");
-        // }
+        if (nb > 16)
+        {
+            int seqAlea = bufflect[13];
+            trame[0] = 0x00;
+            trame[1] = 0x00;
+            trame[2] = 0x00;
+            trame[3] = 0x01;
+            trame[4] = 0x00;
+            trame[5] = 0x09;
+            trame[6] = 0x00;
+            trame[7] = 0xF1;
+            trame[8] = 0x0C;
+            trame[9] = 0x10;
+            trame[10] = 0x14;
+            trame[11] = 0x10;
+            trame[12] = 0x19;
+            trame[13] = seqAlea;
+            trame[14] = 0xFE;
+            CHECK_ERROR(send(sd, (void *) trame, 15, 0), -1, "Erreur envoi data !!! \n");
+        }
     }
 }
 
